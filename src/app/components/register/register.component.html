@@ -1,0 +1,97 @@
+
+<div class="wrapper" style="background-image: url('../assets/img/registration/bg-registration-form-2.jpg');">
+    <div class="inner" style="background-image: url('../assets/img/registration/registration-form-2.jpg');">
+      <h3 style="padding-top:35px;">Create New Account</h3>
+      <form [formGroup]="regForm">
+        <div class="form-group">
+          <div>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" class="form-control" formControlName="first_name">
+          </div>
+          <small class="error" *ngIf="regForm.controls.first_name.invalid && (regForm.controls.first_name.dirty || regForm.controls.first_name.touched); else fnameerror">
+            {{getErrorMessage()}}{{first_name_error}}
+          </small>
+          <ng-template #fnameerror>
+            <small class="error" *ngIf="submitClicked && regForm.controls.first_name.invalid">
+              {{getErrorMessage()}}{{first_name_error}}
+            </small>
+          </ng-template><br>
+
+          <div>
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" class="form-control" formControlName="last_name">
+          </div>
+          <small class="error" *ngIf="regForm.controls.last_name.invalid && (regForm.controls.last_name.dirty || regForm.controls.last_name.touched); else lnameerror">
+            {{getErrorMessage()}}{{last_name_error}}
+          </small>
+          <ng-template #lnameerror>
+            <small class="error" *ngIf="submitClicked && regForm.controls.last_name.invalid">
+            {{getErrorMessage()}}{{last_name_error}}
+          </small>
+        </ng-template><br>
+
+        
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" formControlName="email">
+          </div>
+          <small class="error" *ngIf="regForm.controls.email.invalid && (regForm.controls.email.dirty || regForm.controls.email.touched); else emailerror">
+            {{getErrorMessage()}}{{email_error}}
+          </small>
+          <ng-template #emailerror>
+            <small class="error" *ngIf="submitClicked && regForm.controls.email.invalid">
+              {{getErrorMessage()}}{{email_error}}
+            </small>
+          </ng-template>
+          <small class="error">
+            {{findUserName()}}
+          </small>
+
+          <div>
+            <label for="password">Password</label>
+            <input matInput type="password" name="password" class="form-control" formControlName="password">
+          </div>
+          <small class="error" *ngIf="regForm.controls.password.invalid && (regForm.controls.password.dirty || regForm.controls.password.touched); else passerror">
+            {{getErrorMessage()}}{{password_error}}
+          </small>
+          <ng-template #passerror>
+            <small class="error" *ngIf="submitClicked && regForm.controls.password.invalid">
+              {{getErrorMessage()}}{{password_error}}
+            </small>
+          </ng-template>
+          <div>
+            <small style="padding-left:20px">
+              <span class="fa fa-info" style="color:blue"></span>&nbsp;Atleast 8 Character 
+            </small>
+          </div><br>
+          <div>
+            <label for="passwordConfirm">Confirm Password</label>
+            <input type="password" name="passwordConfirm" class="form-control" formControlName="passwordConfirm">
+          </div>
+          <small class="error" *ngIf="regForm.controls.passwordConfirm.invalid && (regForm.controls.passwordConfirm.dirty || regForm.controls.passwordConfirm.touched); else cpasserror">
+            {{getErrorMessage()}}{{cpassword_error}}
+          </small>
+          <ng-template #cpasserror>
+            <small class="error" *ngIf="submitClicked && regForm.controls.passwordConfirm.invalid">
+              {{getErrorMessage()}}{{cpassword_error}}
+            </small>
+          </ng-template>
+          <small class="error" *ngIf="submitClicked && regForm.controls.passwordConfirm.valid">
+            {{cpass()}}
+          </small><br>
+
+          <div style="position:left">
+            <mat-checkbox (click)="change()">I accept the terms and conditions.</mat-checkbox><br>
+            <small class="error" *ngIf="!box_clicked">{{accept_msg}}</small>
+          </div>        
+    
+          <button type="submit" (click)="saveForm()">Register Now</button><br>
+          <div *ngIf="email_send" class="alert alert-success" style="padding-left:10px">{{email_send}}</div>
+          <p style="text-align: center;margin-top:10px;">Already have an account?<span (click)="openSignin()"style="cursor: pointer; color:coral">Sign In</span></p>        
+
+        </div>
+        </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,49 @@
+
+
+.mat-dialog-title {
+  text-align: center;
+  
+}
+.user,.pass{
+  text-align: center;
+
+}
+#username, #password{
+  
+  height: 25px;
+}
+mat-form-field{
+  width: 100%;
+}
+.sign-in-btn{
+  text-align: center;  
+  
+}
+#sign-btn{
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 18px;
+  background-color: rgb(139, 219, 219);
+}
+.forget{
+  text-align: center;
+
+}
+#forgot{
+  color: dodgerblue;
+  cursor: pointer;
+}
+.lock{
+  transform: scale(6);
+  color: rgb(48, 93, 124);
+}
+.mail-send{
+  text-align: center;
+}
+#send-mail{
+  padding:0.2rem 5rem 0.2rem 5rem;
+  font-size: 18px;
+  background-color: rgb(33, 160, 177); 
+}

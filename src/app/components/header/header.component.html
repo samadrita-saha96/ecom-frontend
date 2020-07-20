@@ -1,0 +1,324 @@
+<!-- Page Preloder -->
+<!-- <div id="preloder">
+  <div class="loader"></div>
+</div> -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section" style="width:100hw">
+      <div class="container-fluid">
+          <div class="inner-header">
+              <!-- <div class="logo" style="width:70px">
+                <a href="home"><img src="../assets/img/logo.png" alt="Home"></a>
+              </div> -->
+              <div class="header-right">
+                  <span *ngIf="!mrtoken">
+                    <span mat-icon-button [matMenuTriggerFor]="beforeMenu" aria-hidden="true">
+                      <mat-icon  style="cursor:pointer;transform:scale(1.5);color:dodgerblue">person</mat-icon>
+                    </span>
+                      <mat-menu id="account-menu" #beforeMenu="matMenu" xPosition="before">
+                        <span type="button" mat-menu-item (click)="openDialog()" >Login</span>
+                        <span (click)="registerpage()" mat-menu-item>Register</span>
+                      </mat-menu>
+                    </span>
+                    <span *ngIf="mrtoken">
+                      <span>Hello, {{logged_in_user.first_name}}
+                        <span mat-icon-button [matMenuTriggerFor]="beforeMenu" aria-hidden="true">
+                          <mat-icon  style="cursor:pointer;transform:scale(1.5);color:dodgerblue;padding-top:13px;">arrow_drop_down</mat-icon>
+                        </span>
+                      </span>
+                      <mat-menu id="account-menu" #beforeMenu="matMenu" xPosition="before">
+                        <span (click)="registerpage()" mat-menu-item>Your Account</span>
+                        <span type="button" mat-menu-item (click)="logout()">Logout</span>
+                      </mat-menu>
+                    </span>
+
+                    &nbsp;&nbsp;
+                  <a class="cart" href="cart" *ngIf="mrtoken">
+                      <mat-icon style="transform:scale(1.4)">shopping_cart
+                        
+                      </mat-icon>
+                      <span *ngIf="itemno">{{itemno}}</span>
+                  </a>
+                  <div class="cart" (click)="openDialog()" *ngIf="!mrtoken" style="display:inline;cursor:pointer;">
+                    <mat-icon style="transform:scale(1.4)">shopping_cart</mat-icon>
+                  </div>
+              </div>
+
+
+              <nav class="main-menu mobile-menu">
+                  <ul>
+                      <li><a [ngClass]="{'active':inhome}" href="home" style="text-decoration:none;">Home</a></li>
+                      
+                      <li><a [ngClass]="{'active':inabout}" href="about" style="text-decoration:none;">About</a></li>
+                      <!-- <li><a [ngClass]="{'active':inblog}"href="blog" style="text-decoration:none;">Blog</a></li> -->
+                      <li><a [ngClass]="{'active':incontact}" href="contact" style="text-decoration:none;">Contact</a></li>
+                      <li>
+                        <form class="mob-search">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-btn">
+                              <button class="btn btn-default" type="submit">
+                                <span class="fa fa-search" style="color:black"></span>
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </li>
+                  </ul>
+              </nav>
+
+          </div>
+      </div>
+    </header>
+
+    <nav id="cat-id" class="navbar bg-light" *ngIf="innerWidth>767">
+      <div class="container">
+      <div class="dropdown">
+        <span id="dropdownMenu2" (click)="open_catalog=!open_catalog" style="cursor:pointer;" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+          Men's Fashion&nbsp;
+          <span class="fa fa-angle-down"></span>
+        </span>
+        <div class="dropdown-menu" id="men" aria-labelledby="dropdownMenu2">
+          <div >
+            <div class="row">
+              <span class="cloth">
+                <h3 style="font-size: 18px;color: cadetblue">Top Wear</h3>
+                <ul style="list-style-type:none;">
+                  <li><a href="p/mens-clothing/t-shirt">T-shirts</a></li>
+                  <li><a href="p/mens-clothing/casual-shirt">Casual Shirts</a></li>
+                  <li><a href="p/mens-clothing/formal-shirt">Formal Shirts</a></li>
+                  <li><a href="p/mens-clothing/suits">Suits</a></li>
+                  <li><a href="p/mens-clothing/blazer">Blazer</a></li>
+                  <li><a href="p/mens-clothing/waistcoat">Waistcoats</a></li>
+                </ul>
+              </span>
+              <span class="accesories">
+                <h3 style="font-size: 18px;color: cadetblue">Bottom Wear</h3>
+                <ul style="list-style-type:none;">
+                  <li><a href="p/mens-clothing/casual-trouser">Casual Trouser</a></li>
+                  <li><a href="p/mens-clothing/formal-trouser"> Formal Trouser</a></li>
+                  <li><a href="p/mens-clothing/jeans">Jeans</a></li>
+                  <li><a href="p/mens-clothing/track-pant">Track Pant</a></li>
+                  <li><a href="p/mens-clothing/three-fourth">Three Fourth</a></li>
+                  <li><a href="p/mens-clothing/shorts">Shorts</a></li>
+                  <li><a href="p/mens-clothing/cargos">Cargos</a></li>
+                </ul>
+              </span>
+              <span class="grooming">
+                <h3 style="font-size: 18px;color: cadetblue">Ethnic Wear</h3>
+                <ul style="list-style-type:none;">
+                  <li><a href="p/mens-clothing/kurtas">Kurtas</a></li>
+                  <li><a href="p/mens-clothing/sherwanis">Sherwanis</a></li>
+                  <li><a href="p/mens-clothing/dhoti">Dhoti</a></li>
+                  <li><a href="p/mens-clothing/ethenic-sets">Ethnic Sets</a></li>
+                  <li><a href="p/mens-clothing/ethenic-pajamas">Ethnic Pajamas</a></li>
+                  <li><a href="p/mens-clothing/nehru-jackets">Nehru Jackets</a></li>
+                </ul>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <span id="dropdownMenu3" (click)="open_catalog=!open_catalog" style="cursor:pointer;" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+          Women's Fashion&nbsp;
+          <span class="fa fa-angle-down"></span>
+          <!-- <span ngIf="open_catalog" class="fa fa-angle-up"></span> -->
+        </span>
+        <div class="dropdown-menu" id="women" aria-labelledby="dropdownMenu2">
+          <div >
+            <div class="row">
+              <span class="cloth">
+                <h3 style="font-size: 18px;color: cadetblue">Clothing</h3>
+                <ul style="list-style-type:none;">
+                  <div style="font-size: 13px;"><b>Western Wear</b></div>
+                  <li>T-shirts</li>
+                  <li>Tops&Tees</li>
+                  <li>Formal Shirts</li>
+                  <li>Ruffles</li>
+                  <li>Grown</li>
+                  <li>Dresses&Jumpsuits</li>
+                  <li>Jeans</li>
+                  <li>Jeggings</li>
+                  <li>Skirts&Shorts</li>
+                  <li>Formal Skirts</li>
+                  <li>Trouser&Capris</li>
+                  <li>Cotton Pants</li>
+                  <li>Jackets&Coats</li>
+                  <li>Blazers&Waistcoat</li>
+                  <li>Shrugs</li>
+                  <div style="font-size: 13px;"><b>Ethnic Wear</b></div>
+                  <li>Sarees</li>
+                  <li>Kurtas</li>
+                  <li>Salwar Suits</li>
+                  <li>Chudidar</li>
+                  <li>Dupatta</li>
+                </ul>
+              </span>
+              <span class="accesories">
+                <h3 style="font-size: 18px; color: cadetblue;">Accessories</h3>
+                <ul style="list-style-type:none;">
+                  <li>Watches</li>
+                  <li>Sunglasses</li>
+                  <li>Hand Bags</li>
+                  <li>Sling Bags</li>
+                  <li>Wallets&Belts</li>
+                  <li>Bagpacks</li>
+                  <li>Jwellery</li>
+                  <li>Hair Straightner</li>
+                  <li>Hair Dryers</li>
+                  <li>Hair Curlers</li>
+                </ul>
+                <span class="footwear">
+                  <h3 style="font-size: 18px; color: cadetblue">Footwear</h3>
+                  <ul style="list-style-type:none;">
+                    <li>Sport Shoes</li>
+                    <li>Casual Shoes</li>
+                    <li>Flats</li>
+                    <li>Boots</li>
+                    <li>Heels</li>
+                    <li>Boots</li>
+                  </ul>
+                </span>
+              </span>
+              <span class="grooming">
+                <h3 style="font-size: 18px; color: cadetblue;">Women's Grooming</h3>
+                <ul style="list-style-type:none;">
+                  <li>Razor</li>
+                  <li>Makeup</li>
+                  <li>Body Lotion</li>
+                  <li>Face Wash</li>
+                  <li>Shampoo</li>
+                  <li>Facial Kit</li>
+                  <li>Face Cream</li>
+                </ul>
+                <span class="inner">
+                  <h3 style="font-size: 18px;color: cadetblue">Inner & Loungewear</h3>
+                  <ul style="list-style-type:none;">
+                    <li>Breif & Trunks</li>
+                    <li>Pajams</li>
+                    <li>Vest</li>
+                    <li>Boxer</li>
+                    <li>Night Suits</li>
+                    <li>Thermals</li>
+                  </ul>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <span id="dropdownMenu4" (click)="open_catalog=!open_catalog" style="cursor:pointer;" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+          Kids&Baby&nbsp;
+          <span class="fa fa-angle-down"></span>
+        </span>
+        <div class="dropdown-menu" id="kids" aria-labelledby="dropdownMenu2">
+          <div >
+            <div class="row">
+              <span class="cloth" style="width:50%">
+                <h3 style="font-size: 18px;color: cadetblue">Clothing</h3>
+                <ul style="list-style-type:none;">
+                  <div style="font-size: 13px;"><b>Boys' Clothing</b></div>
+                  <li>Polos&T-shirts</li>
+                  <li>Ethnic Wear</li>
+                  <li>Shorts&3/4ths</li>
+                  <div style="font-size: 13px;"><b>Girls' Clothing</b></div>
+                  <li>Dresses&Skirts</li>
+                  <li>Ethnic Wear</li>
+                  <li>T-Shirts&Tops</li>
+                  <div style="font-size: 13px;"><b>Baby Boy Clothing</b></div>
+                  <li>Body Suits</li>
+                  <li>Polos&T-shirts</li>
+        
+                  <div style="font-size: 13px;"><b>Baby Girl Clothing</b></div>
+                  <li>Body Suits</li>
+                  <li>Dresses</li>
+                </ul>
+              </span>
+              <span class="accesories" style="width:48%">
+                <span class="footwear">
+                  <h3 style="font-size: 18px; color: cadetblue">Footwear</h3>
+                  <div style="font-size: 13px;"><b>Boys' Footwear</b></div>
+                  <ul style="list-style-type:none;">
+                    <li>Sandals</li>
+                    <li>Sport Shoes</li>
+                    <div style="font-size: 13px;"><b>Girls' Footwear</b></div>
+                    <li>Flats&Bellies</li>
+                    <li>Sport Shoes</li>
+                  </ul>
+                </span>
+                <span class="grooming">
+                  <h3 style="font-size: 18px; color: cadetblue;">Baby Care</h3>
+                  <ul style="list-style-type:none;">
+  
+                    <li>Baby Grooming</li>
+                    <li>Baby Bathings Accessories</li>
+                    <li>Body Beding</li>
+                    <li>Baby Skin Care</li>
+                  </ul>
+                  
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div>Offers</div> -->
+      </div>
+  </nav>
+    <nav *ngIf="innerWidth<=767" class="navbar navbar-expand-md bg-dark navbar-dark">
+      <span class="navbar-brand"></span>
+      <span class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon" style="color:azure"></span>
+      </span>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="home">Home</a>
+          </li>
+          <li class="nav-item">
+              <div class="dropdown">
+                  <span class="dropdown-toggle nav-link"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Shop
+                  </span>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="products">Product Page</a>
+                    <a class="dropdown-item" href="check-out-items">Check out</a>
+                  </div>
+                </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link" href="blog">Blog</a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link" href="contact">Contact</a>
+          </li>
+
+
+        </ul>
+      </div>
+    </nav>
+    <div *ngIf="innerWidth>767">
+      <br><br>
+    </div>
+    <div *ngIf="innerWidth<=767">
+      <form class="mob-search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit" style="background-color: rgb(58, 55, 55);">
+              <span class="fa fa-search" style="color:azure"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Header End -->

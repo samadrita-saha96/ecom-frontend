@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<section class="categories-page spad">
+    <div class="container">
+        <div class="categories-controls">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="categories-filter">
+                        <div class="cf-left">
+                            <form action="#">
+                                <select class="sort">
+                                    <option value="">Sort by</option>
+                                    <option value="">Orders</option>
+                                    <option value="">Newest</option>
+                                    <option value="">Price</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="cf-right">
+                            <span>20 Products</span>
+                            <a href="#">2</a>
+                            <a href="#" class="active">4</a>
+                            <a href="#">6</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                    <div *ngFor="let prod of ProductBySub" class="col-lg-3 col-md-6">
+                        <div class="single-product-item">
+                            <figure style="cursor:pointer;" (click)="openprod(prod.product_name)">
+                                <img src="{{prod.img1}}" alt="">
+                            </figure>
+                            <div class="product-text">
+                                <h6 style="cursor:pointer;" (click)="openprod(prod.product_name)">{{prod.product_name}}</h6>
+                                <div>Rs. {{prod.price}}</div>
+                            </div>
+                        </div>
+                    </div>  
+        </div>
+        <div class="more-product">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a href="#" class="primary-btn">Load More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<app-footer></app-footer>

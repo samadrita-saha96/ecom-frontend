@@ -1,0 +1,315 @@
+<!-- As a heading -->
+<nav class="navbar navbar-light bg-dark">
+  <span class="navbar-brand mb-0 h1" style="color:aliceblue">ELITE</span>
+  <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+</nav>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 ftco-animate">
+        <form class="billing-form">
+          <h3 class="mb-4 billing-heading">Billing Details</h3>
+          <div class="row align-items-end">
+            <div class="w-100"></div>
+            <div class="col-md-12">
+            <mat-accordion>
+              <mat-expansion-panel [disabled]="true" [expanded]="true">
+                <mat-expansion-panel-header class="delivery">
+                  <mat-panel-title>
+                   Delivery Address
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <small *ngIf="addressError" id="noaddress" style="color:red">!Please select an address</small>
+                <div class="w-100"></div>
+                <div class="col-md-12">
+                	<div class="form-group mt-4">
+										<div class="radio" *ngFor="let add of logged_address">
+                      <label class="mr-3"><input type="radio" name="optradio" (click)="selectAddress=add">
+                        <div class="adrs">
+                          <div >{{add.fullname}} &nbsp; {{add.mobile}}</div>
+                          <div >
+                            <span *ngIf="add.housenumber">{{add.housenumber}},&nbsp;</span>
+                            {{add.street}},&nbsp;{{add.city}},&nbsp;{{add.state}}-{{add.pin}}</div>
+                        </div>
+                      </label><br>
+                      <span *ngIf="add!=logged_address[id_for_hr]"><hr></span>
+                    </div>
+                    <div class="btn btn-primary delivery-btn"  (click)="addressfinal()">Deliver Here</div>
+                  </div>
+                  </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-12">
+              <div class="form-group mt-4">
+                <div class="radio">
+                  <label class="newadd">
+                    <mat-accordion>
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                           (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            + Add New Address
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <form [formGroup]="newaddress">
+                          <div class="row align-items-end address">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="firstname">Full Name</label>
+                                <input type="text" class="form-control" formControlName="fullname">
+                                <small *ngIf="newaddress.controls.fullname.invalid && (newaddress.controls.fullname.dirty || newaddress.controls.fullname.touched); else fnameerror">
+                                  {{fullnameerror}}
+                                </small>
+                                <ng-template #fnameerror>
+                                  <small *ngIf="submitClicked && newaddress.controls.fullname.invalid">
+                                    {{fullnameerror}}
+                                  </small>
+                                </ng-template>
+                              </div>
+                            </div>
+                           <div class="w-100"></div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="country">Country</label>
+                                <div class="select-wrap">
+                                  <div class="icon"><span class="fa fa-angle-down" aria-hidden="true"></span></div>
+                                  <select name="" id="" class="form-control" formControlName="country">
+                                    <option value="India">India</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                  </select>
+                                  <small *ngIf="newaddress.controls.country.invalid && (newaddress.controls.country.dirty || newaddress.controls.country.touched); else counerror">
+                                    {{countryerror}}
+                                  </small>
+                                  <ng-template #counerror>
+                                    <small *ngIf="submitClicked && newaddress.controls.country.invalid">
+                                      {{countryerror}}
+                                    </small>
+                                  </ng-template>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="country">State</label>
+                                <div class="select-wrap">
+                                  <div class="icon"><span class="fa fa-angle-down" aria-hidden="true"></span></div>
+                                  <select name="" id="" class="form-control" formControlName="state">
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                  </select>
+                                  <small *ngIf="newaddress.controls.state.invalid && (newaddress.controls.state.dirty || newaddress.controls.state.touched); else sterror">
+                                    {{stateerror}}
+                                  </small>
+                                  <ng-template #sterror>
+                                    <small *ngIf="submitClicked && newaddress.controls.state.invalid">
+                                      {{stateerror}}
+                                    </small>
+                                  </ng-template>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="honusenumber">Flat, House no., Building, Company, Apartment</label>
+                                <input type="text" class="form-control" formControlName="housenumber">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="streetaddress">Area, Colony, Street, Sector, Village</label>
+                                <input type="text" class="form-control" formControlName="street">
+                                <small *ngIf="newaddress.controls.street.invalid && (newaddress.controls.street.dirty || newaddress.controls.street.touched); else strerror">
+                                  {{streeterror}}
+                                </small>
+                                <ng-template #strerror>
+                                  <small *ngIf="submitClicked && newaddress.controls.street.invalid">
+                                    {{streeterror}}
+                                  </small>
+                                </ng-template>
+                              </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="towncity">Landmark</label>
+                                <input type="text" class="form-control" formControlName="landmark">
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="postcodezip">Town / City</label>
+                                <input type="text" class="form-control" formControlName="city">
+                                <small *ngIf="newaddress.controls.city.invalid && (newaddress.controls.city.dirty || newaddress.controls.city.touched); else cterror">
+                                  {{cityerror}}
+                                </small>
+                                <ng-template #cterror>
+                                  <small *ngIf="submitClicked && newaddress.controls.city.invalid">
+                                    {{cityerror}}
+                                  </small>
+                                </ng-template>
+                              </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="phone">Pin Code</label>
+                                <input type="text" class="form-control" formControlName="pin" minlength="6" maxlength="6">
+                                <small *ngIf="newaddress.controls.pin.invalid && (newaddress.controls.pin.dirty || newaddress.controls.pin.touched); else pnerror">
+                                  {{pinerror}}
+                                </small>
+                                <ng-template #pnerror>
+                                  <small *ngIf="submitClicked && newaddress.controls.pin.invalid">
+                                    {{pinerror}}
+                                  </small>
+                                </ng-template>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="emailaddress">Mobile No.</label>
+                                <input type="text" class="form-control" formControlName="mobile" maxlength="10" minlength="10">
+                                <small *ngIf="newaddress.controls.mobile.invalid && (newaddress.controls.mobile.dirty || newaddress.controls.mobile.touched); else mberror">
+                                  {{mobileerror}}
+                                </small>
+                                <ng-template #mberror>
+                                  <small *ngIf="submitClicked && newaddress.controls.mobile.invalid">
+                                    {{mobileerror}}
+                                  </small>
+                                </ng-template>
+                              </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="country">Address Type</label>
+                                <div class="select-wrap">
+                                  <div class="icon"><span class="fa fa-angle-down" aria-hidden="true"></span></div>
+                                  <select name="" id="" class="form-control" formControlName="preferences">
+                                    <option value="">Select an Address Type</option>
+                                    <option value="Home (7 am – 9 pm delivery)">Home (7 am – 9 pm delivery)</option>
+                                    <option value="Office/Commercial (10 AM - 6 PM delivery)">Office/Commercial (10 AM - 6 PM delivery)</option>
+                                  </select>
+                                  <small *ngIf="newaddress.controls.preferences.invalid && (newaddress.controls.preferences.dirty || newaddress.controls.preferences.touched); else preferror">
+                                    {{preferenceserror}}
+                                  </small>
+                                  <ng-template #preferror>
+                                    <small *ngIf="submitClicked && newaddress.controls.preferences.invalid">
+                                      {{preferenceserror}}
+                                    </small>
+                                  </ng-template>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="btn btn-primary add"  (click)="addnew()">Add Address</div>
+
+                        </form>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form><!-- END -->
+
+
+
+        <div  id="totalcart" class="row mt-5 pt-3 d-flex">
+          <div class="col-md-6 d-flex">
+            <div class="cart-detail cart-total bg-light p-3 p-md-4">
+              <h3 class="billing-heading mb-4">Cart Total</h3>
+              <p class="d-flex">
+                <span>Subtotal</span>
+                <span>{{subtotal}}</span>
+              </p>
+              <p class="d-flex">
+                <span>Shipping</span>
+                <span *ngIf="shipping===0" Style="color:green">Free</span>
+                <span *ngIf="shipping!=0">{{shipping}}</span>
+              </p>
+              <p class="d-flex">
+                <span>Discount</span>
+                <span>$3.00</span>
+              </p>
+              <hr>
+              <p class="d-flex total-price">
+                <span>Total</span>
+                <span>{{total}}</span>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="cart-detail bg-light p-3 p-md-4">
+              <h3 class="billing-heading mb-4">Payment Method</h3>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="radio">
+                     <label><input type="radio" name="optradio" class="mr-2" (click)="paymentMethod=1"> Credit/Debit Card&nbsp;&nbsp;&nbsp;<img src="../../assets/img/mastercard.jpg" alt=""></label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="radio">
+                     <label><input type="radio" name="optradio" class="mr-2" (click)="paymentMethod=2"> Paytm&nbsp;&nbsp;&nbsp;<img src="../../assets/img/paypal.jpg" alt=""></label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="radio">
+                     <label><input type="radio" name="optradio" class="mr-2" (click)="paymentMethod=3"> Cash on Delivery</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="checkbox">
+                     <label><input type="checkbox" value="" class="mr-2" (click)="checkChange()"> I have read and accept the terms and conditions</label>
+                  </div>
+                </div>
+              </div>
+              <button disabled *ngIf="accept==false || selectAddress==null || paymentMethod==0" class="btn btn-primary" style="cursor:not-allowed" (click)="placeOrder()">Place an order</button>
+              <button type="button" *ngIf="accept==true && paymentMethod==1 && selectAddress!=null && paymentMethod!=0" class="btn btn-primary" style="cursor:pointer" 
+              (click)="placeOrder()">Place an order</button>
+              <button type="button" *ngIf="accept==true && paymentMethod!=1 && selectAddress!=null && paymentMethod!=0" class="btn btn-primary" style="cursor:pointer" 
+              (click)="placeOrder()" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">Place an order</button>
+            </div>
+          </div>
+        </div>
+      </div> <!-- .col-md-8 -->
+    </div>
+  </div>
+
+  
+
+</section> <!-- .section -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Your order has been placed successfully.
+        <p>Please wait you will be redirected to Home</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<app-footer></app-footer>

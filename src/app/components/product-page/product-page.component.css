@@ -1,0 +1,171 @@
+.imgs{
+	position: absolute;
+	top: -3px;
+	padding: 5px 16px;
+	font-size: 12px;
+	left:-90px;
+}
+.product-img figure .p-status {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	padding: 3px 16px;
+	font-size: 12px;
+	background: #1e1e1e;
+	color: #fff;
+	border-radius: 50px;
+}
+.product-content {
+	padding-top: 20px;
+}
+
+.product-content h2 {
+	color: #1e1e1e;
+	font-weight: 700;
+	margin-bottom: 12px;
+}
+
+.product-content .pc-meta {
+	margin-bottom: 35px;
+}
+
+.product-content .pc-meta h5 {
+	color: #1e1e1e;
+	font-weight: 700;
+	margin-bottom: 18px;
+}
+
+.product-content .pc-meta .rating i {
+	font-size: 20px;
+	color: #FFD200;
+	margin-right: 4px;
+}
+
+.product-content p {
+	color: #838383;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 30px;
+	margin-bottom: 35px;
+}
+
+.carousel-item .p-status{
+  position: absolute;
+	left: 9px;
+	top: 20px;
+	padding: 3px 16px;
+	font-size: 12px;
+	background: #1e1e1e;
+	color: #fff;
+	border-radius: 50px;
+}
+
+@media (min-width:992px) and (max-width:1268px){
+	.product-page .product-slider{
+		padding-left: 55px;
+	}
+}
+
+.border-class{
+	border: 2px solid black;
+}
+.mob-search{
+	margin-top: 20px;
+}
+.desc{
+	margin-top: 20px;
+}
+
+.input-group{
+	width: 210px;
+	border: 2px solid;
+	border-color: rgb(229, 220, 220);
+    border-radius: 6px;
+  }
+  .form-control {
+    border-color: white;
+    box-shadow: inset 0 0px 0px white, 0 0 0px white;
+  }
+  .btn:focus {
+    border-color: white;
+    box-shadow: inset 0 0px 0px white, 0 0 0px white;
+  }
+
+.delivery-check h5{
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.desc div h5{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.desc span{
+  color: rgb(39, 33, 33);
+  margin-top: 5px;
+  font-size: 14px;
+}
+.desc .details span{
+  color: rgb(39, 33, 33);
+  margin-top: 5px;
+  font-size: 14px;
+}
+.desc .details div{
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+}
+.product-content .tags {
+	margin-bottom: 50px;
+}
+
+.product-content .tags li {
+	color: rgb(39, 33, 33);
+	font-size: 14px;
+	font-weight: normal;
+	list-style: none;
+}
+
+.product-content .tags li span {
+	color: black;
+  font-size: 16px;
+  font-weight: 500;
+}
+.size .btn{
+  width: 50px;
+  height: 50px;
+  padding: 7px 10px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight:500;
+  text-align: center;
+  border: 1.5px solid #D0D7DB;
+  margin-left: 15px;
+}
+.size .btn:hover{
+  border: 1.5px solid rgb(231, 43, 159);
+}
+.size .size-selected{
+	border-color: rgb(231, 43, 159);
+	color:rgb(231, 43, 159);
+	font-size: 20px;
+}
+.size div h5{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.product-content .pc-btn{
+	padding: 15px;
+    padding-left: 24px;
+	padding-right: 24px;
+	margin-top: 35px; 
+	text-decoration:none;
+	cursor: pointer;
+}
+.product-content #buy-now{
+	padding-right: 40px;
+    margin-left: 11px;
+    padding-left: 40px;
+}

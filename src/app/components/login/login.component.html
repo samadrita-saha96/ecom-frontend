@@ -1,0 +1,60 @@
+<div *ngIf="!forget_password" class="signin">
+<h1 mat-dialog-title>Sign In</h1>
+<div mat-dialog-content>
+  <p style="color: red;">{{invalid_cre}}</p>
+  <div class="user">
+  <mat-form-field appearance="outline" >
+    <mat-label>Username</mat-label>
+    <input id="username" matInput placeholder="Username or Email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
+  </mat-form-field>
+  </div>
+  <div class="pass">
+    <mat-form-field appearance="outline" >
+      <mat-label>Password</mat-label>
+      <input id="password" [type]="hide? 'password':'text'" matInput placeholder="Password" [formControl]="password" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+    </mat-form-field>
+    </div>
+
+    <div class="sign-in-btn">
+    <button mat-raised-button id="sign-btn" (keydown.enter)="saveForm()" (click)="saveForm()">Sign In</button>
+  </div>
+  <br>
+  <div class="forget">
+    <span type="link" (click)="forget_password=true" id="forgot">Forgot Your Password?</span>
+  </div>
+
+</div>
+
+  
+</div>
+
+<div *ngIf="forget_password" class="forget-password">
+  <div mat-dialog-title>
+    <div *ngIf="no_mail" class="alert alert-danger">{{no_mail}}</div>
+    <div *ngIf="forget_msg" class="alert alert-success">{{forget_msg}}</div>
+    <br><br><br>
+    <mat-icon class="lock" aria-hidden="false">lock</mat-icon>
+  </div>
+  <br><br>
+  <div mat-dialog-content>
+    <div class="user">
+      <mat-form-field>        
+       <input id="username"  matInput placeholder="Your Email" [formControl]="email" style="font-size: 22px" required>
+       <span mat-icon matPrefix>
+          <mat-icon style="transform:scale(1.1);color:darkcyan;margin-right:10px">mail</mat-icon>
+        </span>
+        <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
+      </mat-form-field>
+      </div>
+      <br>
+      <div class="mail-send">
+        <button mat-raised-button id="send-mail" (click)="forgotpass()">Send Mail</button>
+      </div>
+  </div>
+</div>
+
